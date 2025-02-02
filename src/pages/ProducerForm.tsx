@@ -64,6 +64,7 @@ const ProducerForm: React.FC = () => {
         crops: [],
     });
 
+
     const fetchProducer = async () => {
         try {
             await dispatch(findOneProducerAsync(Number(id))).unwrap();
@@ -74,7 +75,7 @@ const ProducerForm: React.FC = () => {
     };
 
     useEffect(() => {
-        fetchProducer();
+        if(id) fetchProducer();
     }, [id]);
 
     useEffect(() => {
