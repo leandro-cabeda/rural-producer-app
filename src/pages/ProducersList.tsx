@@ -63,8 +63,9 @@ const ProducersList: React.FC = () => {
   useEffect(() => {
     if (error) {
       toast.error(`Erro: ${error}`);
+      dispatch(clearError());
     }
-  }, [error]);
+  }, [error, dispatch]);
 
   // Função para abrir o formulário de adicionar/editar produtor
   const handleEdit = (producerId?: number) => {
@@ -142,4 +143,8 @@ const ProducersList: React.FC = () => {
 };
 
 export default ProducersList;
+
+function clearError(): any {
+  throw new Error('Function not implemented.');
+}
 

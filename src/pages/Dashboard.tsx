@@ -50,8 +50,9 @@ const Dashboard: React.FC = () => {
     useEffect(() => {
         if (error) {
             toast.error(`Erro: ${error}`);
+            dispatch(clearError());
         }
-    }, [error]);
+    }, [error, dispatch]);
 
 
     const farmsByState = dashboardData?.farmsByState?.map(item => ({
@@ -152,3 +153,7 @@ const Dashboard: React.FC = () => {
 };
 
 export default Dashboard;
+function clearError(): any {
+    throw new Error('Function not implemented.');
+}
+

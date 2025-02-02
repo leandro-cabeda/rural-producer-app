@@ -194,6 +194,9 @@ const producerSlice = createSlice({
     deleteProducer: (state, action: PayloadAction<Producer>) => {
       state.producers = state.producers.filter(p => p.id !== action.payload.id);
     },
+    clearError: (state) => {
+      state.error = null;
+    },
   },
   extraReducers: (builder) => {
     builder

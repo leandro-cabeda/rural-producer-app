@@ -77,11 +77,13 @@ const ProducerForm: React.FC = () => {
         if (id) fetchProducer();
     }, [id]);
 
+
     useEffect(() => {
         if (error) {
             toast.error(`Erro: ${error}`);
+            dispatch(clearError());
         }
-    }, [error]);
+    }, [error, dispatch]);
 
     useEffect(() => {
         if (id) {
@@ -554,3 +556,7 @@ const ProducerForm: React.FC = () => {
 };
 
 export default ProducerForm;
+function clearError(): any {
+    throw new Error('Function not implemented.');
+}
+
