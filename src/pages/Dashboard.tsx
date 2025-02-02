@@ -16,13 +16,13 @@ const Dashboard: React.FC = () => {
     const navigate = useNavigate();
     const { dashboardData, loading, error } = useSelector((state: RootState) => state.producer);
     const COLORS = [
-        '#FF6384', 
-        '#36A2EB', 
-        '#FFCE56', 
-        '#8B4513', 
-        '#00FF00', 
-        '#FF0000', 
-        '#0000FF', 
+        '#FF6384',
+        '#36A2EB',
+        '#FFCE56',
+        '#8B4513',
+        '#00FF00',
+        '#FF0000',
+        '#0000FF',
         '#FFFF00',
         '#00FFFF',
         '#FF00FF',
@@ -38,9 +38,9 @@ const Dashboard: React.FC = () => {
     const fetchDashboardAllData = async () => {
         try {
             await dispatch(fetchDashboardData()).unwrap();
-            if (error) toast.error("Erro ao carregar os dados: " + error);
-        } catch (error) {
-            console.error('Erro ao carregar os dados:', error);
+        } catch (err) {
+            console.error('Erro ao carregar os dados:', err);
+            error && toast.error("Erro ao carregar os dados: " + error);
         }
     };
 

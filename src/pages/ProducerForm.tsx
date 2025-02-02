@@ -68,14 +68,14 @@ const ProducerForm: React.FC = () => {
     const fetchProducer = async () => {
         try {
             await dispatch(findOneProducerAsync(Number(id))).unwrap();
-            if (error) toast.error("Erro ao buscar o produtor: " + error);
-        } catch (error) {
-            console.error('Erro ao buscar o produtor:', error);
+        } catch (err) {
+            console.error('Erro ao buscar o produtor:', err);
+            error && toast.error("Erro ao buscar o produtor: " + error);
         }
     };
 
     useEffect(() => {
-        if(id) fetchProducer();
+        if (id) fetchProducer();
     }, [id]);
 
     useEffect(() => {
@@ -356,8 +356,8 @@ const ProducerForm: React.FC = () => {
             }
         } catch (err) {
             toast.error("Error: " + err as string);
-        } finally {
             error && toast.error("Ocorreu erro: " + error);
+        } finally {
             navigate('/producers');
         }
     };

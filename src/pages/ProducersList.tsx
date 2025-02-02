@@ -22,9 +22,9 @@ const ProducersList: React.FC = () => {
   const fetchProducersData = async () => {
     try {
       await dispatch(fetchProducers()).unwrap();
-      if (error) toast.error("Erro ao carregar os dados dos produtores: " + error);
-    } catch (error) {
-      console.error('Erro ao carregar os dados dos produtores:', error);
+    } catch (err) {
+      console.error('Erro ao carregar os dados dos produtores:', err);
+      error && toast.error("Erro ao carregar os dados dos produtores: " + error);
     }
   };
 
@@ -49,12 +49,16 @@ const ProducersList: React.FC = () => {
   // Função para excluir produtor
   const handleDelete = async () => {
     if (producerIdToDelete !== null) {
-      await dispatch(deleteProducerAsync(producerIdToDelete)).unwrap();
-      closeModal();
-      if (error) toast.error(error);
-      else toast.success("Produtor excluida com sucesso!");
-
-      setLoadingDelete(false);
+      try {
+        await dispatch(deleteProducerAsync(producerIdToDelete)).unwrap();
+        toast.success("Produtor excluida com sucesso!");
+      } catch (err) {
+        console.error('Erro ao excluir o produtor:', err);
+        error && toast.error("Erro ao excluir o produtor: " + error);
+      } finally {
+        closeModal();
+        setLoadingDelete(false);
+      }
     }
   };
 
@@ -114,8 +118,10 @@ const ProducersList: React.FC = () => {
       </Table>
 
       <Modal isOpen={isModalOpen} onRequestClose={closeModal}
-        style={{ overlay: { backgroundColor: 'rgba(0, 0, 0, 0.5)' }, 
-        content: { width: '300px', margin: 'auto', height: '200px' } }}>
+        style={{
+          overlay: { backgroundColor: 'rgba(0, 0, 0, 0.5)' },
+          content: { width: '300px', margin: 'auto', height: '200px' }
+        }}>
         <h2>Confirmar Exclusão</h2>
         <p>Você tem certeza que deseja excluir este produtor?</p>
         <Button style={{ marginRight: "10px", backgroundColor: "red" }} onClick={handleDelete}>
