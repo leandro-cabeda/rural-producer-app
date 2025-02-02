@@ -356,8 +356,8 @@ const ProducerForm: React.FC = () => {
         } catch (err) {
             toast.error("Error: " + err as string);
         } finally {
-            !error && navigate('/producers');
             error && toast.error("Ocorreu erro: " + error);
+            navigate('/producers');
         }
     };
 
