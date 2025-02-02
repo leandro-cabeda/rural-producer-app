@@ -71,11 +71,14 @@ const initialState: ProducerState = {
   error: null,
 };
 
+const url = "https://rural-producer-api.onrender.com"; // url da api em produção na plataforma Render
+//const url = "http://localhost:3000"; // url da api local para acesso
+
 
 export const fetchDashboardData = createAsyncThunk('producer/fetchDashboardData',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await fetch('http://localhost:3000/producers/dashboard');
+      const response = await fetch(`${url}/producers/dashboard`);
       if (!response.ok) throw new Error('Erro ao buscar os dados do dashboard');
       return response.json();
     } catch (error: any) {
@@ -86,7 +89,7 @@ export const fetchDashboardData = createAsyncThunk('producer/fetchDashboardData'
 export const fetchProducers = createAsyncThunk('producer/fetchProducers',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await fetch('http://localhost:3000/producers');
+      const response = await fetch(`${url}/producers`);
       if (!response.ok) throw new Error('Erro ao buscar os dados dos produtores');
       return response.json();
     } catch (error: any) {
@@ -98,7 +101,7 @@ export const addProducerAsync = createAsyncThunk(
   'producer/addProducer',
   async (newProducer: Producer, { rejectWithValue }) => {
     try {
-      const response = await fetch('http://localhost:3000/producers', {
+      const response = await fetch(`${url}/producers`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newProducer),
@@ -119,7 +122,7 @@ export const updateProducerAsync = createAsyncThunk(
   'producer/updateProducer',
   async (updatedProducer: Producer, { rejectWithValue }) => {
     try {
-      const response = await fetch(`http://localhost:3000/producers/${updatedProducer.id}`, {
+      const response = await fetch(`${url}/producers/${updatedProducer.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedProducer),
@@ -140,7 +143,7 @@ export const deleteProducerAsync = createAsyncThunk(
   'producer/deleteProducer',
   async (id: number, { rejectWithValue }) => {
     try {
-      const response = await fetch(`http://localhost:3000/producers/${id}`, {
+      const response = await fetch(`${url}/producers/${id}`, {
         method: 'DELETE',
       });
 
@@ -158,7 +161,7 @@ export const findOneProducerAsync = createAsyncThunk(
   'producer/findOneProducer',
   async (id: number, { rejectWithValue }) => {
     try {
-      const response = await fetch(`http://localhost:3000/producers/${id}`, {
+      const response = await fetch(`${url}/producers/${id}`, {
         method: 'GET',
       });
 
