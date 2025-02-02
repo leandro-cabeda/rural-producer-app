@@ -70,13 +70,18 @@ const ProducerForm: React.FC = () => {
             await dispatch(findOneProducerAsync(Number(id))).unwrap();
         } catch (err) {
             console.error('Erro ao buscar o produtor:', err);
-            error && toast.error("Erro ao buscar o produtor: " + error);
         }
     };
 
     useEffect(() => {
         if (id) fetchProducer();
     }, [id]);
+
+    useEffect(() => {
+        if (error) {
+            toast.error(`Erro: ${error}`);
+        }
+    }, [error]);
 
     useEffect(() => {
         if (id) {
@@ -355,8 +360,8 @@ const ProducerForm: React.FC = () => {
                 toast.success("Produtor cadastrado com sucesso!");
             }
         } catch (err) {
+            console.error('Erro ao criar/salvar o produtor:', err);
             toast.error("Error: " + err as string);
-            error && toast.error("Ocorreu erro: " + error);
         } finally {
             navigate('/producers');
         }

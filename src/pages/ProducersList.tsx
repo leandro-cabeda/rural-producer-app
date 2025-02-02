@@ -24,7 +24,6 @@ const ProducersList: React.FC = () => {
       await dispatch(fetchProducers()).unwrap();
     } catch (err) {
       console.error('Erro ao carregar os dados dos produtores:', err);
-      error && toast.error("Erro ao carregar os dados dos produtores: " + error);
     }
   };
 
@@ -54,7 +53,6 @@ const ProducersList: React.FC = () => {
         toast.success("Produtor excluida com sucesso!");
       } catch (err) {
         console.error('Erro ao excluir o produtor:', err);
-        error && toast.error("Erro ao excluir o produtor: " + error);
       } finally {
         closeModal();
         setLoadingDelete(false);

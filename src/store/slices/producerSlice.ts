@@ -208,7 +208,7 @@ const producerSlice = createSlice({
       })
       .addCase(fetchDashboardData.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || 'Erro ao carregar os dados do dashboard';
+        state.error = action.error.message + ', erro ao carregar os dados do dashboard';
       })
       .addCase(addProducerAsync.pending, (state) => {
         state.loading = true;
@@ -217,11 +217,11 @@ const producerSlice = createSlice({
       .addCase(addProducerAsync.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.producers.push(action.payload);  // Adiciona o produtor à lista
+        state.producers.push(action.payload);
       })
       .addCase(addProducerAsync.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || 'Erro ao adicionar o produtor';
+        state.error = action.error.message + ', erro ao adicionar o produtor';
       })
       .addCase(updateProducerAsync.pending, (state) => {
         state.loading = true;
@@ -237,7 +237,7 @@ const producerSlice = createSlice({
       })
       .addCase(updateProducerAsync.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || 'Erro ao atualizar o produtor';
+        state.error = action.error.message + ', erro ao atualizar o produtor';
       })
       .addCase(deleteProducerAsync.pending, (state) => {
         state.loading = true;
@@ -250,7 +250,7 @@ const producerSlice = createSlice({
       })
       .addCase(deleteProducerAsync.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || 'Erro ao excluir o produtor';
+        state.error = action.error.message + ', erro ao excluir o produtor';
       })
       .addCase(fetchProducers.fulfilled, (state, action) => {
         state.loading = false;
@@ -259,7 +259,7 @@ const producerSlice = createSlice({
       })
       .addCase(fetchProducers.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || 'Erro ao buscar os dados';
+        state.error = action.error.message + ', erro ao buscar os dados';
       })
       .addCase(fetchProducers.pending, (state) => {
         state.loading = true;
@@ -272,7 +272,7 @@ const producerSlice = createSlice({
       })
       .addCase(findOneProducerAsync.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || 'Erro ao buscar o produtor';
+        state.error = action.error.message + ', erro ao buscar o produtor';
       })
       .addCase(findOneProducerAsync.pending, (state) => {
         state.loading = true;

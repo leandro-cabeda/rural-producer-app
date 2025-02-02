@@ -40,13 +40,18 @@ const Dashboard: React.FC = () => {
             await dispatch(fetchDashboardData()).unwrap();
         } catch (err) {
             console.error('Erro ao carregar os dados:', err);
-            error && toast.error("Erro ao carregar os dados: " + error);
         }
     };
 
     useEffect(() => {
         fetchDashboardAllData();
     }, []);
+
+    useEffect(() => {
+        if (error) {
+            toast.error(`Erro: ${error}`);
+        }
+    }, [error]);
 
 
     const farmsByState = dashboardData?.farmsByState?.map(item => ({
