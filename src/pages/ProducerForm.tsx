@@ -15,7 +15,7 @@ import {
     AddFarmButton,
     ClearButton,
 } from '../components/styled/producer-form.styles'; // Importe os componentes estilizados
-import { addProducerAsync, Crop, Farm, findOneProducerAsync, Harvest, Producer, updateProducerAsync } from '../store/slices/producerSlice';
+import { addProducerAsync, clearError, Crop, Farm, findOneProducerAsync, Harvest, Producer, updateProducerAsync } from '../store/slices/producerSlice';
 import { FaArrowLeft, FaArrowRight, FaPlus, FaSave } from 'react-icons/fa';
 import { StyledButtonWithIcon } from '../components/styled/styles';
 import { AppDispatch, RootState } from '../store/store';
@@ -556,7 +556,3 @@ const ProducerForm: React.FC = () => {
 };
 
 export default ProducerForm;
-function clearError(): any {
-    throw new Error('Function not implemented.');
-}
-

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { AppDispatch, RootState } from '../store/store';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteProducerAsync, fetchProducers } from '../store/slices/producerSlice';
+import { clearError, deleteProducerAsync, fetchProducers } from '../store/slices/producerSlice';
 import { Container, Table, Th, Tr, Td, Button, Title } from '../components/styled/producer.styles';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
@@ -143,8 +143,4 @@ const ProducersList: React.FC = () => {
 };
 
 export default ProducersList;
-
-function clearError(): any {
-  throw new Error('Function not implemented.');
-}
 

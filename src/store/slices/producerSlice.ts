@@ -284,5 +284,5 @@ const producerSlice = createSlice({
   },
 });
 
-export const { addProducer, updateProducer, deleteProducer } = producerSlice.actions;
+export const { addProducer, updateProducer, deleteProducer, clearError } = producerSlice.actions;
 export default producerSlice.reducer;

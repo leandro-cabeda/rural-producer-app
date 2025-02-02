@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../store/store';
 import { PieChart, Tooltip, Pie, Cell, Legend } from 'recharts';
 import { Card, CardTitle, CardValue, DashboardContainer, DashboardGrid } from '../components/styled/dashboard.styles';
-import { fetchDashboardData } from '../store/slices/producerSlice';
+import { clearError, fetchDashboardData } from '../store/slices/producerSlice';
 import { StyledButtonWithIcon } from '../components/styled/styles';
 import { FaArrowRight } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
@@ -153,7 +153,3 @@ const Dashboard: React.FC = () => {
 };
 
 export default Dashboard;
-function clearError(): any {
-    throw new Error('Function not implemented.');
-}
-
