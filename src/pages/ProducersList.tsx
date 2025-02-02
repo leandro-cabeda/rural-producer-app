@@ -52,7 +52,7 @@ const ProducersList: React.FC = () => {
       await dispatch(deleteProducerAsync(producerIdToDelete)).unwrap();
       closeModal();
       if (error) toast.error(error);
-      else toast.success("Fazenda excluida com sucesso!");
+      else toast.success("Produtor excluida com sucesso!");
 
       setLoadingDelete(false);
     }
