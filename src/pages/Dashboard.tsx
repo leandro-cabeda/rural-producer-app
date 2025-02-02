@@ -72,7 +72,7 @@ const Dashboard: React.FC = () => {
                 Lista de Produtores
                 <FaArrowRight />
             </StyledButtonWithIcon>
-            <StyledButtonWithIcon onClick={() => navigate('/add-edit-producer/:id?')}>
+            <StyledButtonWithIcon onClick={() => navigate('/add-edit-producer')}>
                 Adicionar novo produtor
                 <FaArrowRight />
             </StyledButtonWithIcon>
