@@ -75,7 +75,7 @@ const ProducerForm: React.FC = () => {
 
     useEffect(() => {
         if (id) fetchProducer();
-    }, [id, fetchProducer]);
+    }, [id]);
 
 
     useEffect(() => {
