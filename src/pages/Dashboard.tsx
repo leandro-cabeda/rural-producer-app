@@ -5,7 +5,7 @@ import { PieChart, Tooltip, Pie, Cell, Legend } from 'recharts';
 import { Card, CardTitle, CardValue, DashboardContainer, DashboardGrid } from '../components/styled/dashboard.styles';
 import { clearError, fetchDashboardData } from '../store/slices/producerSlice';
 import { StyledButtonWithIcon } from '../components/styled/styles';
-import { FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../components/loading/loading';
 import { toast } from "react-toastify";
