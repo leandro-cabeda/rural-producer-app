@@ -75,7 +75,7 @@ const ProducerForm: React.FC = () => {
 
     useEffect(() => {
         if (id) fetchProducer();
-    }, [id]);
+    }, [id, fetchProducer]);
 
 
     useEffect(() => {
@@ -92,7 +92,7 @@ const ProducerForm: React.FC = () => {
 
             if (producerToEdit) {
                 setProducerData(producerToEdit);
-                setNewFarm(prev => {
+                setNewFarm((prev: any) => {
                     const farmToUpdate = producerToEdit?.farms?.[0];
 
                     return {
@@ -131,7 +131,7 @@ const ProducerForm: React.FC = () => {
                 });
             }
         }
-    }, [id, producers, producer]);
+    }, [id, producers, producer, newFarm]);
 
 
     const handleProducerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -156,7 +156,7 @@ const ProducerForm: React.FC = () => {
                 vegetationArea: 0,
             });
         }
-    }, [newFarm.arableArea, newFarm.vegetationArea, newFarm.totalArea]);
+    }, [newFarm.arableArea, newFarm.vegetationArea, newFarm.totalArea, newFarm]);
 
     const handleFarmChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -256,7 +256,7 @@ const ProducerForm: React.FC = () => {
                 };
             });
 
-            setNewFarm(prev => ({
+            setNewFarm((prev: any) => ({
                 ...prev,
                 crops: [...prev.crops || [], { ...newCrop, id: prev?.crops?.length || 0 + 1 }],
             }))
@@ -275,7 +275,7 @@ const ProducerForm: React.FC = () => {
             });
 
         }
-    }, [newCrop]);
+    }, [newCrop, producerData?.farms?.length, newFarm]);
 
     const handleAddHarvest = () => {
         if (producerData?.farms?.length === 0) {
@@ -332,7 +332,7 @@ const ProducerForm: React.FC = () => {
                 };
             });
 
-            setNewFarm(prev => ({
+            setNewFarm((prev: any) => ({
                 ...prev,
                 harvests: [...prev.harvests || [], { ...newHarvest, id: prev?.harvests?.length || 0 + 1 }],
             }))
@@ -343,7 +343,7 @@ const ProducerForm: React.FC = () => {
                 year: 0,
             }));
         }
-    }, [newHarvest]);
+    }, [newHarvest, producerData?.farms?.length, newFarm]);
 
 
     const handleSaveProducer = async () => {

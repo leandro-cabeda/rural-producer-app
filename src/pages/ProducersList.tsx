@@ -29,7 +29,7 @@ const ProducersList: React.FC = () => {
 
   useEffect(() => {
     fetchProducersData();
-  }, []);
+  }, [fetchProducersData]);
 
   // Função para abrir o modal de confirmação
   const openModal = (id: number) => {

@@ -45,7 +45,7 @@ const Dashboard: React.FC = () => {
 
     useEffect(() => {
         fetchDashboardAllData();
-    }, []);
+    }, [fetchDashboardAllData]);
 
     useEffect(() => {
         if (error) {
