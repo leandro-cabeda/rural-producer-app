@@ -71,7 +71,8 @@ const initialState: ProducerState = {
   error: null,
 };
 
-const url = "https://rural-producer-api.onrender.com"; // url da api em produção na plataforma Render
+const url = "https://rural-producer-api-production.up.railway.app"; // url da api em produção na plataforma Railway
+//const url = "https://rural-producer-api.onrender.com"; // url da api em produção na plataforma Render
 //const url = "http://localhost:3000"; // url da api local para acesso
 
 
