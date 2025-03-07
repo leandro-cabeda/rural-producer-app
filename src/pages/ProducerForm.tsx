@@ -1,4 +1,4 @@
-import React, { useState, useEffect, use } from 'react';
+import React, { useState, useEffect, use, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -65,17 +65,17 @@ const ProducerForm: React.FC = () => {
     });
 
 
-    const fetchProducer = async () => {
+    const fetchProducer = useCallback(async () => {
         try {
             await dispatch(findOneProducerAsync(Number(id))).unwrap();
         } catch (err) {
             console.error('Erro ao buscar o produtor:', err);
         }
-    };
+    }, [dispatch, id]);
 
     useEffect(() => {
         if (id) fetchProducer();
-    }, [id]);
+    }, [id, fetchProducer]);
 
 
     useEffect(() => {

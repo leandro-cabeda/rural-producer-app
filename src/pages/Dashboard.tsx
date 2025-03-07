@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../store/store';
 import { PieChart, Tooltip, Pie, Cell, Legend } from 'recharts';
@@ -35,17 +35,17 @@ const Dashboard: React.FC = () => {
         '#FF4500',
     ];
 
-    const fetchDashboardAllData = async () => {
+    const fetchDashboardAllData = useCallback(async () => {
         try {
             await dispatch(fetchDashboardData()).unwrap();
         } catch (err) {
             console.error('Erro ao carregar os dados:', err);
         }
-    };
+    }, [dispatch]);
 
     useEffect(() => {
         fetchDashboardAllData();
-    }, []);
+    }, [fetchDashboardAllData]);
 
     useEffect(() => {
         if (error) {

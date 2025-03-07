@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { AppDispatch, RootState } from '../store/store';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearError, deleteProducerAsync, fetchProducers } from '../store/slices/producerSlice';
@@ -19,17 +19,17 @@ const ProducersList: React.FC = () => {
   const [producerIdToDelete, setProducerIdToDelete] = useState<number | null>(null);
   const [loadingDelete, setLoadingDelete] = useState(false);
 
-  const fetchProducersData = async () => {
+  const fetchProducersData = useCallback(async () => {
     try {
       await dispatch(fetchProducers()).unwrap();
     } catch (err) {
       console.error('Erro ao carregar os dados dos produtores:', err);
     }
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     fetchProducersData();
-  }, []);
+  }, [fetchProducersData]);
 
   // Função para abrir o modal de confirmação
   const openModal = (id: number) => {
