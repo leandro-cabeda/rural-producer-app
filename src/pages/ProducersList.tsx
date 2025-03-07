@@ -5,8 +5,7 @@ import { clearError, deleteProducerAsync, fetchProducers } from '../store/slices
 import { Container, Table, Th, Tr, Td, Button, Title } from '../components/styled/producer.styles';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
-import { FaArrowLeft } from 'react-icons/fa6';
-import { FaEdit, FaPlus, FaTimes, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaPlus, FaTimes, FaTrash, FaArrowLeft } from 'react-icons/fa';
 import { StyledButtonWithIcon } from '../components/styled/styles';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

@@ -16,8 +16,7 @@ import {
     ClearButton,
 } from '../components/styled/producer-form.styles'; // Importe os componentes estilizados
 import { addProducerAsync, clearError, Crop, Farm, findOneProducerAsync, Harvest, Producer, updateProducerAsync } from '../store/slices/producerSlice';
-import { FaArrowLeft, FaArrowRight} from 'react-icons/fa6';
-import { FaSave, FaPlus } from 'react-icons/fa';
+import { FaSave, FaPlus, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { StyledButtonWithIcon } from '../components/styled/styles';
 import { AppDispatch, RootState } from '../store/store';
 import { toast } from "react-toastify";
